@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173c39" />
+    <meta
+      name="description"
+      content="StrmTool 是一个面向本地媒体库的扫描、识别、链接和自动监控工具。"
+    />
+    <title>StrmTool - 让媒体库自然归位</title>
+    <link rel="icon" type="image/png" href="./assets/strmtool-mark.png" />
+    <link rel="apple-touch-icon" href="./assets/strmtool-mark.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="StrmTool 介绍首页">
+        <img src="./assets/strmtool-mark.png" alt="" />
+        <span>StrmTool</span>
+      </a>
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-button-line"></span>
+        <span class="menu-button-line"></span>
+        <span class="sr-only">打开导航</span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="页面导航">
+        <a href="#workflow">工作方式</a>
+        <a href="#capabilities">核心能力</a>
+        <a href="#media-lab">整理引擎</a>
+        <a href="#pricing">价格方案</a>
+        <a href="https://github.com/sisheng36/StrmTool" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+
+      <a class="header-action" href="#capabilities">探索功能</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> 本地媒体库整理工具</p>
+          <h1 id="hero-title">让每一部影片，<br />抵达它该在的位置。</h1>
+          <p class="hero-lead">
+            StrmTool 将散落在下载目录中的文件，变成结构清晰、可直接播放、能持续维护的媒体库。
+            从扫描到归档，一条流程完成。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#capabilities">探索 StrmTool</a>
+            <a class="text-action" href="#workflow">了解工作方式 <span aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="hero-footnote">
+            <span>Go 后端</span>
+            <span>Vue 3 前端</span>
+            <span>单二进制部署</span>
+          </div>
+        </div>
+
+        <div class="product-scene" aria-label="文件整理流程示意">
+          <div class="scene-toolbar">
+            <div class="scene-brand">
+              <img src="./assets/strmtool-mark.png" alt="" />
+              <span>STRMTOOL</span>
+            </div>
+            <div class="scene-status"><i></i> 系统就绪</div>
+          </div>
+
+          <div class="scene-canvas">
+            <div class="scene-heading">
+              <span>媒体整理流</span>
+              <span>自动执行</span>
+            </div>
+
+            <div class="scene-row scene-row-source">
+              <div class="scene-icon folder-icon"><span></span></div>
+              <div class="scene-row-copy">
+                <small>01 / 扫描来源</small>
+                <strong>downloads / movies</strong>
+                <span>12 个待整理文件</span>
+              </div>
+              <b>MKV</b>
+            </div>
+
+            <div class="scene-connector">
+              <i></i>
+              <span>识别片名与集数</span>
+            </div>
+
+            <div class="scene-row scene-row-match">
+              <div class="scene-icon film-icon"><span></span></div>
+              <div class="scene-row-copy">
+                <small>02 / TMDB 匹配</small>
+                <strong>Dune: Part Two</strong>
+                <span>2024 &middot; 4K &middot; Dolby Vision</span>
+              </div>
+              <b class="check-mark">&#10003;</b>
+            </div>
+
+            <div class="scene-connector">
+              <i></i>
+              <span>创建媒体链接</span>
+            </div>
+
+            <div class="scene-row scene-row-library">
+              <div class="scene-icon library-icon"><span></span></div>
+              <div class="scene-row-copy">
+                <small>03 / 归档媒体库</small>
+                <strong>Media / Movies</strong>
+                <span>Dune Part Two (2024).strm</span>
+              </div>
+              <b class="play-mark">&#9654;</b>
+            </div>
+          </div>
+
+          <div class="scene-footer">
+            <span><i class="footer-check">&#10003;</i> 字幕自动跟随</span>
+            <span><i class="footer-check">&#10003;</i> 全部操作可追溯</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="workflow section-block" aria-labelledby="workflow-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">工作流程 / 01</p>
+            <h2 id="workflow-title">把文件整理，收束成一条可靠的流程。</h2>
+          </div>
+          <p>
+            不再在文件管理器里反复拖拽、改名和比对。先预览，再执行，每一步都有清晰去向。
+          </p>
+        </div>
+
+        <ol class="workflow-list">
+          <li>
+            <div class="workflow-number">01</div>
+            <div class="workflow-symbol workflow-symbol-coral"><span class="symbol-scan"></span></div>
+            <h3>扫描来源目录</h3>
+            <p>快速读取视频与字幕文件，识别片名、年份、剧集与媒体参数。</p>
+            <span class="workflow-note">先看清，再动手</span>
+          </li>
+          <li>
+            <div class="workflow-number">02</div>
+            <div class="workflow-symbol workflow-symbol-yellow"><span class="symbol-film"></span></div>
+            <h3>识别并预览</h3>
+            <p>匹配 TMDB 元数据，批量预览新的命名和目标目录，必要时手动修正。</p>
+            <span class="workflow-note">结果始终可控</span>
+          </li>
+          <li>
+            <div class="workflow-number">03</div>
+            <div class="workflow-symbol workflow-symbol-mint"><span class="symbol-link"></span></div>
+            <h3>链接并持续监控</h3>
+            <p>按你的规则创建链接、复制或移动文件，并自动处理之后的新内容。</p>
+            <span class="workflow-note">一次配置，长期生效</span>
+          </li>
+        </ol>
+      </section>
+
+      <section id="capabilities" class="capabilities section-block" aria-labelledby="capabilities-title">
+        <div class="capability-copy">
+          <p class="section-label">核心能力 / 02</p>
+          <h2 id="capabilities-title">不止整理一次，<br />而是持续保持整洁。</h2>
+          <p>
+            从临时下载到日常补档，从已有媒体库到新的自动化流程，StrmTool 让整理始终遵循相同的规则。
+          </p>
+          <a class="repository-action" href="https://github.com/sisheng36/StrmTool" target="_blank" rel="noopener">
+            访问 GitHub 项目 <span aria-hidden="true">&nearr;</span>
+          </a>
+        </div>
+
+        <div class="capability-list">
+          <button class="capability-row" type="button" data-feature="scan" aria-haspopup="dialog">
+            <span class="capability-index">01</span>
+            <span class="capability-badge capability-badge-coral"><span class="badge-scan"></span></span>
+            <span class="capability-text"><strong>扫描整理</strong><small>批量解析文件，预览命名，再选择执行方式。</small></span>
+            <span class="capability-arrow" aria-hidden="true">&rarr;</span><span class="sr-only">查看扫描整理的详细介绍</span>
+          </button>
+          <button class="capability-row" type="button" data-feature="watch" aria-haspopup="dialog">
+            <span class="capability-index">02</span>
+            <span class="capability-badge capability-badge-mint"><span class="badge-watch"></span></span>
+            <span class="capability-text"><strong>监控任务</strong><small>让来源与目标目录建立映射，自动处理新增文件。</small></span>
+            <span class="capability-arrow" aria-hidden="true">&rarr;</span><span class="sr-only">查看监控任务的详细介绍</span>
+          </button>
+          <button class="capability-row" type="button" data-feature="history" aria-haspopup="dialog">
+            <span class="capability-index">03</span>
+            <span class="capability-badge capability-badge-yellow"><span class="badge-history"></span></span>
+            <span class="capability-text"><strong>历史修正</strong><small>按剧集聚合记录，重新识别和整理未匹配文件。</small></span>
+            <span class="capability-arrow" aria-hidden="true">&rarr;</span><span class="sr-only">查看历史修正的详细介绍</span>
+          </button>
+          <button class="capability-row" type="button" data-feature="rules" aria-haspopup="dialog">
+            <span class="capability-index">04</span>
+            <span class="capability-badge capability-badge-lilac"><span class="badge-rules"></span></span>
+            <span class="capability-text"><strong>规则配置</strong><small>统一管理命名模板、识别词和媒体分类规则。</small></span>
+            <span class="capability-arrow" aria-hidden="true">&rarr;</span><span class="sr-only">查看规则配置的详细介绍</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="media-lab" class="media-lab section-block" aria-labelledby="media-lab-title">
+        <div class="media-lab-heading">
+          <div>
+            <p class="section-label">媒体整理引擎 / 03</p>
+            <h2 id="media-lab-title">从一串文件名，读懂一整部作品。</h2>
+          </div>
+          <p>
+            解析片名、年份、季集、分辨率、编码、音轨和发布组；再把这些信息变成可预测的目标路径和命名。
+          </p>
+        </div>
+
+        <div class="media-decoder" aria-label="媒体文件信息解析示意">
+          <div class="decoder-toolbar">
+            <span><i></i> 文件解析器</span>
+            <span>输入 / 输出</span>
+          </div>
+          <div class="decoder-source">
+            <span class="decoder-prompt">$</span>
+            <code>Dune.Part.Two.2024.2160p.UHD.BluRay.DV.HDR10.HEVC.Atmos-GROUP.mkv</code>
+          </div>
+          <div class="decoder-grid">
+            <div class="decoder-token decoder-token-title"><span>标题</span><strong>Dune: Part Two</strong></div>
+            <div class="decoder-token"><span>年份</span><strong>2024</strong></div>
+            <div class="decoder-token"><span>分辨率</span><strong>2160p</strong></div>
+            <div class="decoder-token"><span>视频</span><strong>HEVC</strong></div>
+            <div class="decoder-token"><span>动态范围</span><strong>DV + HDR10</strong></div>
+            <div class="decoder-token"><span>音轨</span><strong>Atmos</strong></div>
+          </div>
+          <div class="decoder-result">
+            <span>目标命名</span>
+            <code>Dune Part Two (2024) {2160p HEVC DV Atmos}.strm</code>
+          </div>
+        </div>
+
+        <div class="mode-explorer">
+          <div class="mode-explorer-copy">
+            <p class="section-label">整理方式 / 04</p>
+            <h3>同一套规则，<br />适配不同的存储策略。</h3>
+            <p>选择一种整理方式，查看它在媒体库中的工作方式。</p>
+          </div>
+          <div class="mode-console">
+            <div class="mode-tabs" role="tablist" aria-label="整理方式">
+              <button class="mode-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="mode-panel" data-mode="hardlink">硬链接</button>
+              <button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="mode-panel" data-mode="symlink">软链接</button>
+              <button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="mode-panel" data-mode="copy">复制</button>
+              <button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="mode-panel" data-mode="move">移动</button>
+            </div>
+            <div id="mode-panel" class="mode-panel" role="tabpanel" aria-live="polite">
+              <div class="mode-panel-heading">
+                <span id="mode-index">方式 / 01</span>
+                <strong id="mode-title">硬链接</strong>
+              </div>
+              <p id="mode-description">源目录与媒体库共享同一份磁盘数据，整理后不会额外占用空间。</p>
+              <div class="mode-paths">
+                <div><span>来源</span><code>/downloads/Dune.Part.Two.2024.mkv</code></div>
+                <div><span>媒体库</span><code id="mode-library-path">/media/Movies/Dune Part Two (2024).strm</code></div>
+              </div>
+              <div class="mode-benefit"><i></i><span id="mode-benefit">节省空间，适合同一文件系统内的媒体库整理。</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="support-and-rules">
+          <section class="support-scope" aria-labelledby="support-title">
+            <div class="support-heading">
+              <p class="section-label">支持范围 / 05</p>
+              <h3 id="support-title">电影、剧集与字幕，统一进入同一条整理流程。</h3>
+            </div>
+            <div class="support-grid">
+              <article class="support-item support-item-forest">
+                <span>内容类型</span>
+                <strong>电影 · 剧集 · 混合目录</strong>
+                <p>可按电影、剧集或混合目录运行；剧集会识别季、集与多集范围。</p>
+              </article>
+              <article class="support-item support-item-yellow">
+                <span>视频与 STRM</span>
+                <strong>17 种扩展名</strong>
+                <p>MKV、MP4、AVI、MOV、M2TS、ISO、TS、WEBM、WMV、FLV、RMVB、OGM、DIVX、M4V、MPG、MPEG、STRM。</p>
+              </article>
+              <article class="support-item support-item-coral">
+                <span>字幕跟随</span>
+                <strong>7 种字幕格式</strong>
+                <p>SRT、ASS、SSA、SUB、VTT、SUP、IDX 会随视频整理到对应目录。</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="rule-catalog" aria-labelledby="rule-catalog-title">
+            <div class="rule-catalog-heading">
+              <p class="section-label">命名模板字段 / 06</p>
+              <h3 id="rule-catalog-title">目录、季目录和文件名，按你需要的字段组合。</h3>
+              <p>支持可视化轨道与 Jinja 风格模板；电影和剧集可分别定义路径。</p>
+            </div>
+            <div class="rule-catalog-grid">
+              <article class="rule-field-group">
+                <span>片名</span>
+                <p>中文片名、英文片名、原文片名、保留原始文件名。</p>
+              </article>
+              <article class="rule-field-group">
+                <span>年份与 ID</span>
+                <p>带括号年份、纯年份，以及花括号、方括号、短横线三种 TMDB ID 格式。</p>
+              </article>
+              <article class="rule-field-group">
+                <span>季与集</span>
+                <p>S01E01、S01E01-E03、中文季集、Season 01、S01 等多种格式。</p>
+              </article>
+              <article class="rule-field-group">
+                <span>画质与编码</span>
+                <p>分辨率、来源、流媒体、HDR/DV、版本、视频编码、帧率与发布组。</p>
+              </article>
+              <article class="rule-field-group">
+                <span>音频</span>
+                <p>音频格式与音轨数，例如 TrueHD、DDP、AAC、FLAC、Multi。</p>
+              </article>
+              <article class="rule-field-group">
+                <span>路径结构</span>
+                <p>目录分层、空格、点、短横线、中圆点、下划线等分隔符都可组合。</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="snapshot" class="snapshot section-block" aria-labelledby="snapshot-title">
+        <div class="snapshot-heading">
+          <p class="section-label">产品原则 / 07</p>
+          <h2 id="snapshot-title">把媒体库的秩序，交还给你的规则。</h2>
+        </div>
+        <div class="snapshot-grid" aria-live="polite">
+          <article class="metric metric-forest">
+            <p>整理方式</p>
+            <strong>4</strong>
+            <span><i></i><b>链接、复制、移动均可选择</b></span>
+          </article>
+          <article class="metric metric-yellow">
+            <p>媒体识别</p>
+            <strong>TMDB</strong>
+            <span>支持本地化标题与手动修正</span>
+          </article>
+          <article class="metric metric-coral">
+            <p>部署形态</p>
+            <strong>1</strong>
+            <span>单二进制即可运行</span>
+          </article>
+        </div>
+        <div class="snapshot-footnote">
+          <span>本地优先</span>
+          <span>无需云端账户</span>
+          <span>持续演进</span>
+        </div>
+      </section>
+
+      <section id="pricing" class="pricing section-block" aria-labelledby="pricing-title">
+        <div class="pricing-heading">
+          <div>
+            <p class="section-label">价格方案 / 08</p>
+            <h2 id="pricing-title">先低门槛使用，再决定是否长期拥有。</h2>
+          </div>
+          <p>两种方案都包含完整功能。我们优先推荐年付：你可以用更低的成本持续获得更新，并在真正确定长期需求后再考虑永久版。</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-plan price-plan-year">
+            <div class="price-plan-topline"><span>优先推荐</span><span>按年续费</span></div>
+            <h3>年付版</h3>
+            <p class="price-value"><small>￥</small>30<span>/ 年</span></p>
+            <p class="price-description">适合绝大多数用户：先完整体验一年，持续获得新功能与维护更新，成本低、选择更灵活。</p>
+            <ul>
+              <li>完整媒体扫描、识别、整理与监控功能</li>
+              <li>持续获取版本更新与功能演进</li>
+              <li>按当前价格使用约 6 年，费用才接近永久版</li>
+            </ul>
+          </article>
+          <article class="price-plan price-plan-lifetime">
+            <div class="price-plan-topline"><span>长期用户</span><span>一次付清</span></div>
+            <h3>永久版</h3>
+            <p class="price-value"><small>￥</small>188<span>永久</span></p>
+            <p class="price-description">适合已经确认会长期、稳定使用，并希望一次性完成授权的用户。永久授权会写入项目，后续不依赖续费渠道。</p>
+            <ul>
+              <li>完整功能与永久使用权</li>
+              <li>永久授权写入项目，停止维护后仍可继续使用</li>
+              <li>更适合明确的长期归档需求</li>
+            </ul>
+          </article>
+        </div>
+        <p class="pricing-note"><strong>为什么先选年付？</strong> 年付只需 ￥30，可完整验证它是否适合你的目录结构、命名习惯和下载流程；相比一次投入 ￥188，试用与持续使用的决策成本更低。</p>
+        <p class="licensing-note"><strong>授权说明：</strong> 若项目后续停止维护且不再提供续费渠道，年付授权到期后将不再续期；只有永久授权会写入项目并继续有效。</p>
+      </section>
+
+      <section class="closing section-block" aria-labelledby="closing-title">
+        <div>
+          <p class="section-label">开始使用</p>
+          <h2 id="closing-title">从一个目录开始，<br />其余交给 StrmTool。</h2>
+        </div>
+        <div class="closing-action">
+          <p>选择一个来源目录，先预览变化，再开始建立属于你的媒体库。</p>
+          <a class="closing-button" href="https://github.com/sisheng36/StrmTool" target="_blank" rel="noopener">查看项目仓库 <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="feature-dialog" class="feature-dialog" aria-labelledby="feature-dialog-title" aria-describedby="feature-dialog-description">
+      <div class="feature-dialog-inner">
+        <div class="feature-dialog-topbar">
+          <span id="feature-dialog-index">模块 / 01</span>
+          <button class="dialog-close" type="button" aria-label="关闭功能详情" title="关闭">&times;</button>
+        </div>
+        <div class="feature-dialog-title-row">
+          <div>
+            <p class="section-label">功能详解</p>
+            <h2 id="feature-dialog-title">扫描整理</h2>
+          </div>
+          <span class="dialog-mark" id="feature-dialog-mark">01</span>
+        </div>
+        <p id="feature-dialog-description" class="feature-dialog-description"></p>
+        <ul class="feature-detail-list" aria-label="功能要点"></ul>
+        <div class="feature-dialog-trace">
+          <span id="feature-trace-label">扫描流程</span>
+          <code id="feature-trace-value"></code>
+        </div>
+        <div class="feature-dialog-footer">
+          <button class="dialog-nav" type="button" data-feature-step="previous" aria-label="上一个功能" title="上一个功能">&larr;</button>
+          <span id="feature-dialog-count">01 / 04</span>
+          <button class="dialog-nav" type="button" data-feature-step="next" aria-label="下一个功能" title="下一个功能">&rarr;</button>
+        </div>
+      </div>
+    </dialog>
+
+    <footer class="site-footer">
+      <a class="wordmark" href="#top">
+        <img src="./assets/strmtool-mark.png" alt="" />
+        <span>StrmTool</span>
+      </a>
+      <p>让媒体库自然归位。</p>
+      <a href="https://github.com/sisheng36/StrmTool" target="_blank" rel="noopener">GitHub</a>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
