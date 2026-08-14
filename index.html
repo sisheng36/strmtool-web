@@ -83,8 +83,7 @@
           <p class="eyebrow"><span></span> 本地媒体库整理工具</p>
           <h1 id="hero-title">让每一部影片，<br />抵达它该在的位置。</h1>
           <p class="hero-lead">
-            StrmTool 将散落在下载目录中的文件，变成结构清晰、可直接播放、能持续维护的媒体库。
-            从扫描到归档，一条流程完成。
+            StrmTool 将分散在下载目录中的媒体文件，整理为结构清晰、可直接播放、可持续维护的媒体库，覆盖从扫描到归档的完整流程。
           </p>
           <div class="hero-actions">
             <a class="primary-button" href="#capabilities">探索 StrmTool</a>
@@ -164,10 +163,10 @@
         <div class="section-heading">
           <div>
             <p class="section-label">工作流程 / 01</p>
-            <h2 id="workflow-title">把文件整理，收束成一条可靠的流程。</h2>
+            <h2 id="workflow-title">将整理流程固化为可预览、可执行的标准流程。</h2>
           </div>
           <p>
-            不再在文件管理器里反复拖拽、改名和比对。先预览，再执行，每一步都有清晰去向。
+            先预览、后执行，明确每个文件的识别结果与归档路径，避免在文件管理器中重复拖拽与改名。
           </p>
         </div>
 
@@ -177,20 +176,20 @@
             <div class="workflow-symbol workflow-symbol-coral"><span class="symbol-scan"></span></div>
             <h3>扫描来源目录</h3>
             <p>快速读取视频与字幕文件，识别片名、年份、剧集与媒体参数。</p>
-            <span class="workflow-note">先看清，再动手</span>
+            <span class="workflow-note">先预览，后执行</span>
           </li>
           <li>
             <div class="workflow-number">02</div>
             <div class="workflow-symbol workflow-symbol-yellow"><span class="symbol-film"></span></div>
             <h3>识别并预览</h3>
             <p>匹配 TMDB 元数据，批量预览新的命名和目标目录，必要时手动修正。</p>
-            <span class="workflow-note">结果始终可控</span>
+            <span class="workflow-note">识别结果可逐项确认</span>
           </li>
           <li>
             <div class="workflow-number">03</div>
             <div class="workflow-symbol workflow-symbol-mint"><span class="symbol-link"></span></div>
             <h3>链接并持续监控</h3>
-            <p>按你的规则创建链接、复制或移动文件，并自动处理之后的新内容。</p>
+            <p>按已配置规则创建链接、复制或移动文件，并自动处理后续新增内容。</p>
             <span class="workflow-note">一次配置，长期生效</span>
           </li>
         </ol>
@@ -199,9 +198,9 @@
       <section id="capabilities" class="capabilities section-block" aria-labelledby="capabilities-title">
         <div class="capability-copy">
           <p class="section-label">核心能力 / 02</p>
-          <h2 id="capabilities-title">不止整理一次，<br />而是持续保持整洁。</h2>
+          <h2 id="capabilities-title">既完成一次整理，<br />也保持媒体库长期整洁。</h2>
           <p>
-            从临时下载到日常补档，从已有媒体库到新的自动化流程，StrmTool 让整理始终遵循相同的规则。
+            无论临时下载、日常补档还是已有媒体库，整理始终遵循同一套规则。
           </p>
           <a class="repository-action" href="https://github.com/sisheng36/strmtool-web" target="_blank" rel="noopener">
             访问 GitHub 项目 <span aria-hidden="true">&nearr;</span>
@@ -209,29 +208,33 @@
         </div>
 
         <div class="capability-list">
-          <button class="capability-row" type="button" data-feature="scan" aria-haspopup="dialog">
+          <button class="capability-card" type="button" data-feature="scan" aria-haspopup="dialog">
             <span class="capability-index">01</span>
             <span class="capability-badge capability-badge-coral"><span class="badge-scan"></span></span>
             <span class="capability-text"><strong>扫描整理</strong><small>批量解析文件，预览命名，再选择执行方式。</small></span>
-            <span class="capability-arrow" aria-hidden="true">&rarr;</span><span class="sr-only">查看扫描整理的详细介绍</span>
+            <span class="capability-arrow" aria-hidden="true">&rarr;</span>
+            <span class="sr-only">查看扫描整理的详细介绍</span>
           </button>
-          <button class="capability-row" type="button" data-feature="watch" aria-haspopup="dialog">
+          <button class="capability-card" type="button" data-feature="watch" aria-haspopup="dialog">
             <span class="capability-index">02</span>
             <span class="capability-badge capability-badge-mint"><span class="badge-watch"></span></span>
             <span class="capability-text"><strong>监控任务</strong><small>让来源与目标目录建立映射，自动处理新增文件。</small></span>
-            <span class="capability-arrow" aria-hidden="true">&rarr;</span><span class="sr-only">查看监控任务的详细介绍</span>
+            <span class="capability-arrow" aria-hidden="true">&rarr;</span>
+            <span class="sr-only">查看监控任务的详细介绍</span>
           </button>
-          <button class="capability-row" type="button" data-feature="history" aria-haspopup="dialog">
+          <button class="capability-card" type="button" data-feature="history" aria-haspopup="dialog">
             <span class="capability-index">03</span>
             <span class="capability-badge capability-badge-yellow"><span class="badge-history"></span></span>
             <span class="capability-text"><strong>历史修正</strong><small>按剧集聚合记录，重新识别和整理未匹配文件。</small></span>
-            <span class="capability-arrow" aria-hidden="true">&rarr;</span><span class="sr-only">查看历史修正的详细介绍</span>
+            <span class="capability-arrow" aria-hidden="true">&rarr;</span>
+            <span class="sr-only">查看历史修正的详细介绍</span>
           </button>
-          <button class="capability-row" type="button" data-feature="rules" aria-haspopup="dialog">
+          <button class="capability-card" type="button" data-feature="rules" aria-haspopup="dialog">
             <span class="capability-index">04</span>
             <span class="capability-badge capability-badge-lilac"><span class="badge-rules"></span></span>
             <span class="capability-text"><strong>规则配置</strong><small>统一管理命名模板、识别词和媒体分类规则。</small></span>
-            <span class="capability-arrow" aria-hidden="true">&rarr;</span><span class="sr-only">查看规则配置的详细介绍</span>
+            <span class="capability-arrow" aria-hidden="true">&rarr;</span>
+            <span class="sr-only">查看规则配置的详细介绍</span>
           </button>
         </div>
       </section>
@@ -362,7 +365,7 @@
       <section id="snapshot" class="snapshot section-block" aria-labelledby="snapshot-title">
         <div class="snapshot-heading">
           <p class="section-label">产品原则 / 07</p>
-          <h2 id="snapshot-title">把媒体库的秩序，交还给你的规则。</h2>
+          <h2 id="snapshot-title">媒体库结构由你的规则决定。</h2>
         </div>
         <div class="snapshot-grid" aria-live="polite">
           <article class="metric metric-forest">
@@ -392,9 +395,9 @@
         <div class="pricing-heading">
           <div>
             <p class="section-label">价格方案 / 08</p>
-            <h2 id="pricing-title">先低门槛使用，再决定是否长期拥有。</h2>
+            <h2 id="pricing-title">以较低成本开始，确认需求后再长期使用。</h2>
           </div>
-          <p>两种方案都包含完整功能。我们优先推荐年付：你可以用更低的成本持续获得更新，并在真正确定长期需求后再考虑永久版。</p>
+          <p>两种方案均包含完整功能。建议优先选择年付：以更低成本持续获得更新，待确认长期需求后再考虑永久授权。</p>
         </div>
 
         <div class="pricing-grid">
@@ -421,17 +424,17 @@
             </ul>
           </article>
         </div>
-        <p class="pricing-note"><strong>为什么先选年付？</strong> 年付只需 ￥30，可完整验证它是否适合你的目录结构、命名习惯和下载流程；相比一次投入 ￥188，试用与持续使用的决策成本更低。</p>
+        <p class="pricing-note"><strong>选择建议</strong> 年付方案仅需 ￥30，可用于验证其是否匹配你的目录结构、命名习惯与下载流程；相比一次投入 ￥188，先选择年付的决策成本更低。</p>
         <p class="licensing-note"><strong>授权说明：</strong> 若项目后续停止维护且不再提供续费渠道，年付授权到期后将不再续期；只有永久授权会写入项目并继续有效。</p>
       </section>
 
       <section class="closing section-block" aria-labelledby="closing-title">
         <div>
           <p class="section-label">开始使用</p>
-          <h2 id="closing-title">从一个目录开始，<br />其余交给 StrmTool。</h2>
+          <h2 id="closing-title">从选择来源目录开始，<br />逐步建立媒体库。</h2>
         </div>
         <div class="closing-action">
-          <p>选择一个来源目录，先预览变化，再开始建立属于你的媒体库。</p>
+          <p>选择来源目录，先预览变更，再建立媒体库。</p>
           <a class="closing-button" href="https://github.com/sisheng36/strmtool-web" target="_blank" rel="noopener">查看项目仓库 <span aria-hidden="true">&rarr;</span></a>
         </div>
       </section>
