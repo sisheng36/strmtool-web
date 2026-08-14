@@ -1,3 +1,48 @@
+const themeToggle = document.querySelector('.theme-toggle')
+const metaThemeColor = document.querySelector('#meta-theme-color')
+
+function isDarkTheme() {
+  return document.documentElement.getAttribute('data-theme') === 'dark'
+}
+
+function syncThemeChrome() {
+  if (metaThemeColor) {
+    metaThemeColor.setAttribute('content', isDarkTheme() ? '#0b1020' : '#172554')
+  }
+  if (themeToggle) {
+    themeToggle.setAttribute(
+      'aria-label',
+      isDarkTheme() ? '切换浅色模式' : '切换深色模式',
+    )
+    themeToggle.setAttribute(
+      'title',
+      isDarkTheme() ? '切换浅色模式' : '切换深色模式',
+    )
+  }
+}
+
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+  try {
+    localStorage.setItem('strm-theme', dark ? 'dark' : 'light')
+  } catch {}
+  syncThemeChrome()
+}
+
+themeToggle?.addEventListener('click', () => {
+  applyTheme(!isDarkTheme())
+})
+
+window.matchMedia('(prefers-color-scheme: dark)')?.addEventListener('change', (event) => {
+  let stored = null
+  try {
+    stored = localStorage.getItem('strm-theme')
+  } catch {}
+  if (!stored) applyTheme(event.matches)
+})
+
+syncThemeChrome()
+
 const menuButton = document.querySelector('.menu-button')
 const navigation = document.querySelector('.site-nav')
 

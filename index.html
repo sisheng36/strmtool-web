@@ -3,38 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#173c39" />
+    <meta name="theme-color" content="#172554" id="meta-theme-color" />
     <meta
       name="description"
       content="StrmTool 是一个面向本地媒体库的扫描、识别、链接和自动监控工具。"
     />
     <title>StrmTool - 让媒体库自然归位</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" type="image/png" href="./assets/strmtool-mark.png" />
     <link rel="apple-touch-icon" href="./assets/strmtool-mark.png" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("strm-theme");
+          var dark =
+            stored === "dark" ||
+            (stored !== "light" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          document.documentElement.setAttribute(
+            "data-theme",
+            dark ? "dark" : "light",
+          );
+          var meta = document.querySelector("#meta-theme-color");
+          if (meta) {
+            meta.setAttribute("content", dark ? "#0b1020" : "#172554");
+          }
+        } catch (error) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="StrmTool 介绍首页">
-        <img src="./assets/strmtool-mark.png" alt="" />
-        <span>StrmTool</span>
-      </a>
+      <div class="site-header-inner">
+        <a class="wordmark" href="#top" aria-label="StrmTool 介绍首页">
+          <img src="./assets/strmtool-mark.png" alt="" />
+          <span>StrmTool</span>
+        </a>
 
-      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="menu-button-line"></span>
-        <span class="menu-button-line"></span>
-        <span class="sr-only">打开导航</span>
-      </button>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="menu-button-line"></span>
+          <span class="menu-button-line"></span>
+          <span class="sr-only">打开导航</span>
+        </button>
 
-      <nav id="site-nav" class="site-nav" aria-label="页面导航">
-        <a href="#workflow">工作方式</a>
-        <a href="#capabilities">核心能力</a>
-        <a href="#media-lab">整理引擎</a>
-        <a href="#pricing">价格方案</a>
-        <a href="https://github.com/sisheng36/strmtool-web" target="_blank" rel="noopener">GitHub</a>
-      </nav>
+        <nav id="site-nav" class="site-nav" aria-label="页面导航">
+          <a href="#workflow">工作方式</a>
+          <a href="#capabilities">核心能力</a>
+          <a href="#media-lab">整理引擎</a>
+          <a href="#pricing">价格方案</a>
+          <a href="https://github.com/sisheng36/strmtool-web" target="_blank" rel="noopener">GitHub</a>
+        </nav>
 
-      <a class="header-action" href="#capabilities">探索功能</a>
+        <div class="header-actions">
+          <button class="theme-toggle" type="button" aria-label="切换深浅模式" title="切换深浅模式">
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+            </svg>
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+            </svg>
+          </button>
+          <a class="header-action" href="#capabilities">探索功能</a>
+        </div>
+      </div>
     </header>
 
     <main id="top">
