@@ -58,6 +58,7 @@
           <a href="#workflow">工作方式</a>
           <a href="#capabilities">核心能力</a>
           <a href="#media-lab">整理引擎</a>
+          <a href="#deploy">部署</a>
           <a href="#pricing">价格方案</a>
           <a href="https://github.com/sisheng36/strmtool-web" target="_blank" rel="noopener">GitHub</a>
         </nav>
@@ -72,7 +73,7 @@
               <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
             </svg>
           </button>
-          <a class="header-action" href="#capabilities">探索功能</a>
+          <a class="header-action" href="#deploy">立即部署</a>
         </div>
       </div>
     </header>
@@ -86,13 +87,13 @@
             StrmTool 将分散在下载目录中的媒体文件，整理为结构清晰、可直接播放、可持续维护的媒体库，覆盖从扫描到归档的完整流程。
           </p>
           <div class="hero-actions">
-            <a class="primary-button" href="#capabilities">探索 StrmTool</a>
+            <a class="primary-button" href="#deploy">立即部署</a>
             <a class="text-action" href="#workflow">了解工作方式 <span aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="hero-footnote">
             <span>Go 后端</span>
             <span>Vue 3 前端</span>
-            <span>单二进制部署</span>
+            <span>Docker 一键部署</span>
           </div>
         </div>
 
@@ -391,10 +392,55 @@
         </div>
       </section>
 
+      <section id="deploy" class="deploy section-block" aria-labelledby="deploy-title">
+        <div class="deploy-heading">
+          <div>
+            <p class="section-label">部署方法 / 08</p>
+            <h2 id="deploy-title">用 Docker 拉起服务，<br />把媒体目录挂进容器。</h2>
+          </div>
+          <p>
+            提供 Docker 命令和 Docker Compose 两种方式。镜像已发布到 Docker Hub，把宿主机媒体目录挂载进去即可使用。
+          </p>
+        </div>
+
+        <div class="deploy-console">
+          <div class="deploy-tabs" role="tablist" aria-label="部署方式">
+            <button class="deploy-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="deploy-panel" id="deploy-tab-docker" data-deploy="docker">Docker 命令</button>
+            <button class="deploy-tab" type="button" role="tab" aria-selected="false" aria-controls="deploy-panel" id="deploy-tab-compose" data-deploy="compose">Docker Compose</button>
+          </div>
+          <div id="deploy-panel" class="deploy-panel" role="tabpanel" aria-labelledby="deploy-tab-docker" aria-live="polite">
+            <div class="deploy-toolbar">
+              <span><i></i><b id="deploy-filename">docker run</b></span>
+              <button class="copy-button" type="button" id="deploy-copy">复制</button>
+            </div>
+            <p class="deploy-hint" id="deploy-hint">在已安装 Docker 的机器上直接执行。将 /your/media 换成你的媒体根目录。</p>
+            <pre class="deploy-code" id="deploy-code"></pre>
+          </div>
+        </div>
+
+        <div class="deploy-notes">
+          <article>
+            <span>01</span>
+            <strong>媒体目录</strong>
+            <p>将 <code>/your/media</code> 换成宿主机上的媒体根目录。硬链接要求来源和目标位于同一挂载点，例如都放在该目录的子文件夹中。</p>
+          </article>
+          <article>
+            <span>02</span>
+            <strong>数据与授权</strong>
+            <p><code>./data</code> 保存配置和数据库。挂载 <code>/etc/machine-id</code> 后，容器重建仍绑定同一台机器；若宿主机没有该文件，请删掉这一行，避免 Docker 把它建成目录。</p>
+          </article>
+          <article>
+            <span>03</span>
+            <strong>打开控制台</strong>
+            <p>启动后访问 <code>http://localhost:8080</code>。若 8080 已被占用，把左侧主机端口改成空闲端口即可，例如 <code>18080:8080</code>。</p>
+          </article>
+        </div>
+      </section>
+
       <section id="pricing" class="pricing section-block" aria-labelledby="pricing-title">
         <div class="pricing-heading">
           <div>
-            <p class="section-label">价格方案 / 08</p>
+            <p class="section-label">价格方案 / 09</p>
             <h2 id="pricing-title">以较低成本开始，确认需求后再长期使用。</h2>
           </div>
           <p>两种方案均包含完整功能。建议优先选择年付：以更低成本持续获得更新，待确认长期需求后再考虑永久授权。</p>
@@ -434,7 +480,7 @@
           <h2 id="closing-title">从选择来源目录开始，<br />逐步建立媒体库。</h2>
         </div>
         <div class="closing-action">
-          <p>选择来源目录，先预览变更，再建立媒体库。</p>
+          <p>用 Docker 拉起服务，选择来源目录，先预览再整理。</p>
           <a class="closing-button" href="https://github.com/sisheng36/strmtool-web" target="_blank" rel="noopener">查看项目仓库 <span aria-hidden="true">&rarr;</span></a>
         </div>
       </section>

@@ -258,3 +258,122 @@ modeTabs.forEach((tab, index) => {
 
 renderFeature(0)
 renderMode('hardlink')
+
+const deployDetails = {
+  docker: {
+    tabId: 'deploy-tab-docker',
+    filename: 'docker run',
+    hint: '在已安装 Docker 的机器上直接执行。将 /your/media 换成你的媒体根目录。',
+    code: `docker run -d \\
+  --name strmtool \\
+  --restart unless-stopped \\
+  -p 8080:8080 \\
+  -e TZ=Asia/Shanghai \\
+  -v /your/media:/media \\
+  -v ./data:/data \\
+  -v /etc/machine-id:/etc/host-machine-id:ro \\
+  sisheng36/strmtool:latest`,
+  },
+  compose: {
+    tabId: 'deploy-tab-compose',
+    filename: 'docker-compose.yml',
+    hint: '保存为 docker-compose.yml 后，在同目录执行 docker compose up -d。将 /your/media 换成你的媒体根目录。',
+    code: `services:
+  strmtool:
+    image: sisheng36/strmtool:latest
+    container_name: strmtool
+    ports:
+      - "8080:8080"
+    volumes:
+      # 源和目标需在同一挂载点下才能硬链接
+      - /your/media:/media
+      - ./data:/data
+      # 宿主机识别码，容器重建后仍绑定同一台机器
+      - /etc/machine-id:/etc/host-machine-id:ro
+    environment:
+      - TZ=Asia/Shanghai
+    restart: unless-stopped`,
+  },
+}
+
+const deployTabs = [...document.querySelectorAll('[data-deploy]')]
+const deployPanel = document.querySelector('#deploy-panel')
+const deployFilename = document.querySelector('#deploy-filename')
+const deployHint = document.querySelector('#deploy-hint')
+const deployCode = document.querySelector('#deploy-code')
+const deployCopy = document.querySelector('#deploy-copy')
+let activeDeploy = 'docker'
+let copyResetTimer = 0
+
+function renderDeploy(mode) {
+  const detail = deployDetails[mode]
+  if (!detail) return
+
+  activeDeploy = mode
+  if (deployFilename) deployFilename.textContent = detail.filename
+  if (deployHint) deployHint.textContent = detail.hint
+  if (deployCode) deployCode.textContent = detail.code
+  if (deployPanel) deployPanel.setAttribute('aria-labelledby', detail.tabId)
+  if (deployCopy) {
+    deployCopy.textContent = '复制'
+    deployCopy.classList.remove('is-copied')
+  }
+
+  deployTabs.forEach((tab) => {
+    const isSelected = tab.dataset.deploy === mode
+    tab.classList.toggle('is-active', isSelected)
+    tab.setAttribute('aria-selected', String(isSelected))
+    tab.tabIndex = isSelected ? 0 : -1
+  })
+}
+
+deployTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => renderDeploy(tab.dataset.deploy))
+
+  tab.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
+    event.preventDefault()
+
+    let nextIndex = index
+    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + deployTabs.length) % deployTabs.length
+    if (event.key === 'ArrowRight') nextIndex = (index + 1) % deployTabs.length
+    if (event.key === 'Home') nextIndex = 0
+    if (event.key === 'End') nextIndex = deployTabs.length - 1
+
+    const nextTab = deployTabs[nextIndex]
+    renderDeploy(nextTab.dataset.deploy)
+    nextTab.focus()
+  })
+})
+
+async function copyDeployCode() {
+  const detail = deployDetails[activeDeploy]
+  if (!detail || !deployCopy) return
+
+  try {
+    await navigator.clipboard.writeText(detail.code)
+  } catch {
+    const selection = window.getSelection()
+    const range = document.createRange()
+    if (!deployCode || !selection) return
+    range.selectNodeContents(deployCode)
+    selection.removeAllRanges()
+    selection.addRange(range)
+    document.execCommand('copy')
+    selection.removeAllRanges()
+  }
+
+  deployCopy.textContent = '已复制'
+  deployCopy.classList.add('is-copied')
+  window.clearTimeout(copyResetTimer)
+  copyResetTimer = window.setTimeout(() => {
+    deployCopy.textContent = '复制'
+    deployCopy.classList.remove('is-copied')
+  }, 1800)
+}
+
+deployCopy?.addEventListener('click', () => {
+  copyDeployCode()
+})
+
+renderDeploy('docker')
