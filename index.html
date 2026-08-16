@@ -427,7 +427,7 @@
           <article>
             <span>02</span>
             <strong>数据与授权</strong>
-            <p><code>./data</code> 保存配置和数据库。挂载 <code>/etc/machine-id</code> 后，容器重建仍绑定同一台机器；若宿主机没有该文件，请删掉这一行，避免 Docker 把它建成目录。</p>
+            <p><code>./data</code> 保存配置、数据库和授权。请持久化该目录，容器重建后设置仍在；清空或更换目录后需重新激活。</p>
           </article>
           <article>
             <span>03</span>

@@ -271,7 +271,6 @@ const deployDetails = {
   -e TZ=Asia/Shanghai \\
   -v /your/media:/media \\
   -v ./data:/data \\
-  -v /etc/machine-id:/etc/host-machine-id:ro \\
   sisheng36/strmtool:latest`,
   },
   compose: {
@@ -288,8 +287,6 @@ const deployDetails = {
       # 源和目标需在同一挂载点下才能硬链接
       - /your/media:/media
       - ./data:/data
-      # 宿主机识别码，容器重建后仍绑定同一台机器
-      - /etc/machine-id:/etc/host-machine-id:ro
     environment:
       - TZ=Asia/Shanghai
     restart: unless-stopped`,
