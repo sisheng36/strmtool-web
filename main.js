@@ -80,7 +80,7 @@ const featureDetails = [
     title: '监控任务',
     description: '为下载目录与媒体库建立长期映射；新增文件出现后，按已配置的模板、整理方式与分类规则完成归档。',
     points: [
-      '分别指定来源目录、目标目录、媒体类型、命名模板与冲突策略。',
+      '分别指定来源目录、目标目录、媒体类型、命名模板、冲突策略与刮削。',
       '自动监控新增内容，减少重复扫描与手动操作。',
       '可按目录分类，将电影、剧集与特殊内容归档至不同位置。',
     ],
@@ -113,6 +113,19 @@ const featureDetails = [
     traceLabel: '规则引擎',
     traceValue: '识别字段 → 命名模板 → 分类条件 → 目标目录',
   },
+  {
+    id: 'scrape',
+    index: '05',
+    title: 'Emby 刮削',
+    description: '整理完成后，按 Emby 目录规范写入 NFO 与海报。扫描和监控任务都可单独开关；也可以只下载图片，把剧情交给 Emby。',
+    points: [
+      '写入电影、剧集与分集 NFO，包含标题、简介、演职员以及 TMDB / IMDb 编号。',
+      '下载 poster、fanart、logo，以及剧集的季海报与分集缩略图。',
+      '已有文件不覆盖；演员只写入带头像的条目。刮削语言可选中文优先或原语言优先。',
+    ],
+    traceLabel: '刮削流程',
+    traceValue: 'TMDB 匹配 → 写入 NFO / 海报 → Emby 识别入库',
+  },
 ]
 
 const featureDialog = document.querySelector('#feature-dialog')
@@ -139,7 +152,7 @@ function renderFeature(index) {
   if (dialogDescription) dialogDescription.textContent = feature.description
   if (dialogTraceLabel) dialogTraceLabel.textContent = feature.traceLabel
   if (dialogTraceValue) dialogTraceValue.textContent = feature.traceValue
-  if (dialogCount) dialogCount.textContent = `${feature.index} / 04`
+  if (dialogCount) dialogCount.textContent = `${feature.index} / ${String(featureDetails.length).padStart(2, '0')}`
 
   if (dialogList) {
     dialogList.replaceChildren(...feature.points.map((point) => {
@@ -256,8 +269,96 @@ modeTabs.forEach((tab, index) => {
   })
 })
 
+const scrapeDetails = {
+  movie: {
+    index: '输出 / 01',
+    title: '电影 NFO 与海报',
+    description: '独立电影目录写入同名 NFO，以及 poster、fanart、logo；已存在的文件会跳过。',
+    paths: [
+      ['NFO', 'Dune Part Two (2024).nfo'],
+      ['海报', 'poster.jpg · fanart.jpg · logo.png'],
+    ],
+    benefit: '标题、简介和海报语言可选中文优先或原语言优先。',
+  },
+  tv: {
+    index: '输出 / 02',
+    title: '剧集 NFO 与海报',
+    description: '剧集目录写入 tvshow.nfo、分集 NFO、季海报和分集缩略图，同一部剧只写一次节目级文件。',
+    paths: [
+      ['节目', 'tvshow.nfo · poster.jpg · fanart.jpg · logo.png'],
+      ['季 / 集', 'season01-poster.jpg · S01E01-thumb.jpg · S01E01.nfo'],
+    ],
+    benefit: '演员最多写入 10 位，且只保留带头像的条目。',
+  },
+  art: {
+    index: '输出 / 03',
+    title: '仅海报',
+    description: '关闭写入 NFO 后只下载图片，剧情和演职员交给 Emby 自己补全。',
+    paths: [
+      ['海报', 'poster.jpg · fanart.jpg · logo.png'],
+      ['剧集', 'season01-poster.jpg · S01E01-thumb.jpg'],
+    ],
+    benefit: '适合已经由 Emby 管理元数据、只想补齐封面的媒体库。',
+  },
+}
+
+const scrapeTabs = [...document.querySelectorAll('[data-scrape]')]
+const scrapeIndex = document.querySelector('#scrape-index')
+const scrapeTitle = document.querySelector('#scrape-title')
+const scrapeDescription = document.querySelector('#scrape-description')
+const scrapePaths = document.querySelector('#scrape-paths')
+const scrapeBenefit = document.querySelector('#scrape-benefit')
+
+function renderScrape(mode) {
+  const detail = scrapeDetails[mode]
+  if (!detail) return
+
+  if (scrapeIndex) scrapeIndex.textContent = detail.index
+  if (scrapeTitle) scrapeTitle.textContent = detail.title
+  if (scrapeDescription) scrapeDescription.textContent = detail.description
+  if (scrapeBenefit) scrapeBenefit.textContent = detail.benefit
+  if (scrapePaths) {
+    scrapePaths.replaceChildren(...detail.paths.map(([label, value]) => {
+      const row = document.createElement('div')
+      const name = document.createElement('span')
+      const code = document.createElement('code')
+      name.textContent = label
+      code.textContent = value
+      row.append(name, code)
+      return row
+    }))
+  }
+
+  scrapeTabs.forEach((tab) => {
+    const isSelected = tab.dataset.scrape === mode
+    tab.classList.toggle('is-active', isSelected)
+    tab.setAttribute('aria-selected', String(isSelected))
+    tab.tabIndex = isSelected ? 0 : -1
+  })
+}
+
+scrapeTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => renderScrape(tab.dataset.scrape))
+
+  tab.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
+    event.preventDefault()
+
+    let nextIndex = index
+    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + scrapeTabs.length) % scrapeTabs.length
+    if (event.key === 'ArrowRight') nextIndex = (index + 1) % scrapeTabs.length
+    if (event.key === 'Home') nextIndex = 0
+    if (event.key === 'End') nextIndex = scrapeTabs.length - 1
+
+    const nextTab = scrapeTabs[nextIndex]
+    renderScrape(nextTab.dataset.scrape)
+    nextTab.focus()
+  })
+})
+
 renderFeature(0)
 renderMode('hardlink')
+renderScrape('movie')
 
 const deployDetails = {
   docker: {

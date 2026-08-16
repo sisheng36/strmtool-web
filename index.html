@@ -191,7 +191,7 @@
             <div class="workflow-number">03</div>
             <div class="workflow-symbol workflow-symbol-mint"><span class="symbol-link"></span></div>
             <h3>链接并持续监控</h3>
-            <p>按已配置规则创建链接、复制或移动文件，并自动处理后续新增内容。</p>
+            <p>按已配置规则创建链接、复制或移动文件，并可写入 Emby NFO 与海报，自动处理后续新增内容。</p>
             <span class="workflow-note">一次配置，长期生效</span>
           </li>
         </ol>
@@ -237,6 +237,13 @@
             <span class="capability-text"><strong>规则配置</strong><small>统一管理命名模板、识别词和媒体分类规则。</small></span>
             <span class="capability-arrow" aria-hidden="true">&rarr;</span>
             <span class="sr-only">查看规则配置的详细介绍</span>
+          </button>
+          <button class="capability-card" type="button" data-feature="scrape" aria-haspopup="dialog">
+            <span class="capability-index">05</span>
+            <span class="capability-badge capability-badge-sky"><span class="badge-scrape"></span></span>
+            <span class="capability-text"><strong>Emby 刮削</strong><small>整理后写入 NFO 与海报，语言和是否写剧情可关。</small></span>
+            <span class="capability-arrow" aria-hidden="true">&rarr;</span>
+            <span class="sr-only">查看 Emby 刮削的详细介绍</span>
           </button>
         </div>
       </section>
@@ -303,10 +310,37 @@
           </div>
         </div>
 
+        <div class="scrape-explorer">
+          <div class="scrape-explorer-copy">
+            <p class="section-label">Emby 刮削 / 05</p>
+            <h3>整理完成后，<br />把元数据写成 Emby 能读的文件。</h3>
+            <p>匹配到 TMDB 后，按 Emby 目录规范写入 NFO 与海报。已有文件不会覆盖；也可只下载图片，把剧情交给 Emby。</p>
+          </div>
+          <div class="mode-console scrape-console">
+            <div class="mode-tabs scrape-tabs" role="tablist" aria-label="刮削输出">
+              <button class="mode-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="scrape-panel" data-scrape="movie">电影</button>
+              <button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="scrape-panel" data-scrape="tv">剧集</button>
+              <button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="scrape-panel" data-scrape="art">仅海报</button>
+            </div>
+            <div id="scrape-panel" class="mode-panel" role="tabpanel" aria-live="polite">
+              <div class="mode-panel-heading">
+                <span id="scrape-index">输出 / 01</span>
+                <strong id="scrape-title">电影 NFO 与海报</strong>
+              </div>
+              <p id="scrape-description">独立电影目录写入同名 NFO，以及 poster、fanart、logo；已存在的文件会跳过。</p>
+              <div class="mode-paths scrape-paths" id="scrape-paths">
+                <div><span>NFO</span><code>Dune Part Two (2024).nfo</code></div>
+                <div><span>海报</span><code>poster.jpg · fanart.jpg · logo.png</code></div>
+              </div>
+              <div class="mode-benefit"><i></i><span id="scrape-benefit">标题、简介和海报语言可选中文优先或原语言优先。</span></div>
+            </div>
+          </div>
+        </div>
+
         <div class="support-and-rules">
           <section class="support-scope" aria-labelledby="support-title">
             <div class="support-heading">
-              <p class="section-label">支持范围 / 05</p>
+              <p class="section-label">支持范围 / 06</p>
               <h3 id="support-title">电影、剧集与字幕，统一进入同一条整理流程。</h3>
             </div>
             <div class="support-grid">
@@ -330,7 +364,7 @@
 
           <section class="rule-catalog" aria-labelledby="rule-catalog-title">
             <div class="rule-catalog-heading">
-              <p class="section-label">命名模板字段 / 06</p>
+              <p class="section-label">命名模板字段 / 07</p>
               <h3 id="rule-catalog-title">目录、季目录和文件名，按你需要的字段组合。</h3>
               <p>支持可视化轨道与 Jinja 风格模板；电影和剧集可分别定义路径。</p>
             </div>
@@ -366,7 +400,7 @@
 
       <section id="snapshot" class="snapshot section-block" aria-labelledby="snapshot-title">
         <div class="snapshot-heading">
-          <p class="section-label">产品原则 / 07</p>
+          <p class="section-label">产品原则 / 08</p>
           <h2 id="snapshot-title">媒体库结构由你的规则决定。</h2>
         </div>
         <div class="snapshot-grid" aria-live="polite">
@@ -388,28 +422,39 @@
         </div>
         <div class="snapshot-footnote">
           <span>本地优先</span>
+          <span>Emby 刮削</span>
           <span>无需云端账户</span>
-          <span>持续演进</span>
         </div>
       </section>
 
       <section id="pricing" class="pricing section-block" aria-labelledby="pricing-title">
         <div class="pricing-heading">
           <div>
-            <p class="section-label">价格方案 / 08</p>
-            <h2 id="pricing-title">以较低成本开始，确认需求后再长期使用。</h2>
+            <p class="section-label">价格方案 / 09</p>
+            <h2 id="pricing-title">先花 1 元体验一天，确认合适后再长期使用。</h2>
           </div>
-          <p>两种方案均包含完整功能。建议优先选择年付：以更低成本持续获得更新，待确认长期需求后再考虑永久授权。</p>
+          <p>三种方案均包含完整功能。可用 ￥1 体验 1 天；日常使用建议年付 ￥30，确认长期需求后再考虑永久授权。</p>
         </div>
 
         <div class="pricing-grid">
+          <article class="price-plan price-plan-trial">
+            <div class="price-plan-topline"><span>先试一天</span><span>按天体验</span></div>
+            <h3>体验版</h3>
+            <p class="price-value"><small>￥</small>1<span>/ 天</span></p>
+            <p class="price-description">用最低成本确认是否匹配你的目录结构、命名习惯与下载流程，再决定是否继续。</p>
+            <ul>
+              <li>完整媒体扫描、识别、整理、监控与刮削功能</li>
+              <li>授权有效期 1 天，到期后需重新激活</li>
+              <li>适合首次部署和对照媒体库试跑</li>
+            </ul>
+          </article>
           <article class="price-plan price-plan-year">
             <div class="price-plan-topline"><span>优先推荐</span><span>按年续费</span></div>
             <h3>年付版</h3>
             <p class="price-value"><small>￥</small>30<span>/ 年</span></p>
-            <p class="price-description">适合绝大多数用户：先完整体验一年，持续获得新功能与维护更新，成本低、选择更灵活。</p>
+            <p class="price-description">适合绝大多数用户：完整体验一年，持续获得新功能与维护更新，成本低、选择更灵活。</p>
             <ul>
-              <li>完整媒体扫描、识别、整理与监控功能</li>
+              <li>完整媒体扫描、识别、整理、监控与刮削功能</li>
               <li>持续获取版本更新与功能演进</li>
               <li>按当前价格使用约 6 年，费用才接近永久版</li>
             </ul>
@@ -426,14 +471,14 @@
             </ul>
           </article>
         </div>
-        <p class="pricing-note"><strong>选择建议</strong> 年付方案仅需 ￥30，可用于验证其是否匹配你的目录结构、命名习惯与下载流程；相比一次投入 ￥188，先选择年付的决策成本更低。</p>
-        <p class="licensing-note"><strong>授权说明：</strong> 若项目后续停止维护且不再提供续费渠道，年付授权到期后将不再续期；只有永久授权会写入项目并继续有效。</p>
+        <p class="pricing-note"><strong>选择建议</strong> 先用 ￥1 体验 1 天；确认匹配后再选择年付 ￥30。永久版适合已经确定会长期使用的用户。</p>
+        <p class="licensing-note"><strong>授权说明：</strong> 体验版有效期为 1 天。若项目后续停止维护且不再提供续费渠道，年付授权到期后将不再续期；只有永久授权会写入项目并继续有效。</p>
       </section>
 
       <section id="deploy" class="deploy section-block" aria-labelledby="deploy-title">
         <div class="deploy-heading">
           <div>
-            <p class="section-label">部署方法 / 09</p>
+            <p class="section-label">部署方法 / 10</p>
             <h2 id="deploy-title">用 Docker 拉起服务，<br />把媒体目录挂进容器。</h2>
           </div>
           <p>
@@ -478,7 +523,7 @@
       <section id="companions" class="companions section-block" aria-labelledby="companions-title">
         <div class="companions-heading">
           <div>
-            <p class="section-label">配套推荐 / 10</p>
+            <p class="section-label">配套推荐 / 11</p>
             <h2 id="companions-title">优先推荐这些项目，<br />和 StrmTool 一起补齐链路。</h2>
           </div>
           <p>
@@ -538,7 +583,7 @@
         </div>
         <div class="feature-dialog-footer">
           <button class="dialog-nav" type="button" data-feature-step="previous" aria-label="上一个功能" title="上一个功能">&larr;</button>
-          <span id="feature-dialog-count">01 / 04</span>
+          <span id="feature-dialog-count">01 / 05</span>
           <button class="dialog-nav" type="button" data-feature-step="next" aria-label="下一个功能" title="下一个功能">&rarr;</button>
         </div>
       </div>
